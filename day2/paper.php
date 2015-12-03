@@ -17,4 +17,15 @@ foreach($input as $box) {
         $dimensions[$key] = intval($value);
     }
 
+    // Sort every dimension by size.
+    sort($dimensions);
+    $paper += 2 * ($dimensions[0] * $dimensions[1]);
+    $paper += 2 * ($dimensions[1] * $dimensions[2]);
+    $paper += 2 * ($dimensions[2] * $dimensions[0]);
+
+    // Add smallest side as extra paper.
+    $extra += ($dimensions[0] * $dimensions[1]);
 }
+
+$total = $paper + $extra;
+echo "The elves need $total square feet of packaging paper.";
